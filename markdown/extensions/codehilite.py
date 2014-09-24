@@ -99,6 +99,7 @@ class CodeHilite(object):
         self.src = self.src.strip('\n')
 
         # if self.lang is None:
+        self.lang = 'python'
         self._parseHeader()
 
         if pygments:
@@ -205,7 +206,6 @@ class HiliteTreeprocessor(Treeprocessor):
                 code = CodeHilite(children[0].text,
                             linenums=self.config['linenums'],
                             guess_lang=self.config['guess_lang'],
-                            lang=self.config['lang'],
                             css_class=self.config['css_class'],
                             style=self.config['pygments_style'],
                             noclasses=self.config['noclasses'],
@@ -229,7 +229,6 @@ class CodeHiliteExtension(Extension):
             'linenums': [None, "Use lines numbers. True=yes, False=no, None=auto"],
             'force_linenos' : [False, "Depreciated! Use 'linenums' instead. Force line numbers - Default: False"],
             'guess_lang' : [True, "Automatic language detection - Default: True"],
-            'lang' : [None, "Default language - Default: None"],
             'css_class' : ["codehilite",
                            "Set class name for wrapper <div> - Default: codehilite"],
             'pygments_style' : ['default', 'Pygments HTML Formatter Style (Colorscheme) - Default: default'],
